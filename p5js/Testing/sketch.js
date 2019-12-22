@@ -21,6 +21,8 @@ function draw() {
     textSize(32);
     fill(255);
     noStroke()
-    text(touches[0].x + ", " + touches[0].y, 100, 100);
+    if (touches.length > 0) {
+        text(touches[0].x + ", " + touches[0].y, 100, 100);
+    }
 }
 
