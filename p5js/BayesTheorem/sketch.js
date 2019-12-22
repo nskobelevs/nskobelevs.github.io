@@ -12,7 +12,7 @@ let ratio;
 
 function setup() {
     size = floor(sort([windowHeight, windowWidth])[0] * 0.99);
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth*0.99, windowHeight*0.99);
 
     topLeftCorner = createVector(round(windowWidth/2 - size * 0.2), round(windowHeight/2 - size * 0.2));
     squareSize = round(size * 0.2 * 2);
@@ -165,7 +165,7 @@ function middlePoint(a, b, c) {
 
 function windowResized() {
     size = floor(sort([windowHeight, windowWidth])[0] * 0.99);
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth*0.99, windowHeight*0.99);
 
     topLeftCorner = createVector(round(windowWidth/2 - size * 0.2), round(windowHeight/2 - size * 0.2));
     squareSize = round(size * 0.2 * 2);
