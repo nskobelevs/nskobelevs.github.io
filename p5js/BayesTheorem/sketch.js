@@ -101,11 +101,11 @@ function mousePressed() {
 }
 
 function touchStarted() {
-    if (dist(touches[0][0], touches[0][1], ph.x, ph.y) < c) {
+    if (dist(touches[0].x, touches[0].y, ph.x, ph.y) < 2*c) {
         ph.drag = true;
-    } else if (dist(touches[0][0], touches[0][1], peh.x, peh.y) < c) {
+    } else if (dist(touches[0].x, touches[0].y, peh.x, peh.y) < 2*c) {
         peh.drag = true;
-    } else if (dist(touches[0][0], touches[0][1], penh.x, penh.y) < c) {
+    } else if (dist(touches[0].x, touches[0].y, penh.x, penh.y) < 2*c) {
         penh.drag = true;
     }
 }
@@ -129,11 +129,11 @@ function mouseDragged() {
 
 function touchMoved() {
     if (ph.drag) {
-        ph.set(middlePoint(topLeftCorner.x, touches[0][0], topLeftCorner.x + squareSize, ph.y), ph.y);
+        ph.set(middlePoint(topLeftCorner.x, touches[0].x, topLeftCorner.x + squareSize, ph.y), ph.y);
     } else if (peh.drag) {
-        peh.set(peh.x, middlePoint(topLeftCorner.y, touches[0][1], topLeftCorner.y + squareSize));
+        peh.set(peh.x, middlePoint(topLeftCorner.y, touches[0].y, topLeftCorner.y + squareSize));
     } else if (penh.drag) {
-        penh.set(penh.x, middlePoint(topLeftCorner.y, touches[0][1], topLeftCorner.y + squareSize));
+        penh.set(penh.x, middlePoint(topLeftCorner.y, touches[0].y, topLeftCorner.y + squareSize));
     }
 
     let a = (ph.x - topLeftCorner.x) * (topLeftCorner.y + squareSize - peh.y);
