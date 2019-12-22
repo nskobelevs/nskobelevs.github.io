@@ -38,7 +38,6 @@ function setup() {
 function draw() {
     background(0);
 
-    textSize(c*2);
 
     stroke(255);
     noFill();
@@ -71,6 +70,12 @@ function draw() {
 
     fill(255);
     noStroke();
+
+    textSize(c*4);
+    textAlign(CENTER, TOP);
+    text("Geometric Bayes Theorem", width/2, height*0.04);
+
+    textSize(c*2);
 
     textAlign(CENTER, BOTTOM);
     text("P(H)\n" + round((ph.x - topLeftCorner.x)/squareSize*100) + "%", (topLeftCorner.x + ph.x)/2, topLeftCorner.y - size*0.01);
@@ -121,7 +126,6 @@ function mouseReleased() {
 function middlePoint(a, b, c) {
     let r = (c - a) / 100
     b = round(b/r)*r;
-    // let b = b / (c - a)/100;
     let ar = [a, b, c].sort((a,b) => a-b)
     return ar[1];
 }
@@ -130,7 +134,7 @@ function windowResized() {
     size = floor(sort([windowHeight, windowWidth])[0] * 0.99);
     resizeCanvas(windowWidth, windowHeight);
 
-    topLeftCorner = createVector(round(size/2 - size * 0.2), round(size/2 - size * 0.2));
+    topLeftCorner = createVector(round(windowWidth/2 - size * 0.2), round(windowHeight/2 - size * 0.2));
     squareSize = round(size * 0.2 * 2);
 
     c = round(size * 0.01);
