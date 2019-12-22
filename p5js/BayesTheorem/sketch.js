@@ -100,6 +100,16 @@ function mousePressed() {
     }
 }
 
+function touchStarted() {
+    if (dist(touches[0][0], touches[0][1], ph.x, ph.y) < c) {
+        ph.drag = true;
+    } else if (dist(touches[0][0], touches[0][1], peh.x, peh.y) < c) {
+        peh.drag = true;
+    } else if (dist(touches[0][0], touches[0][1], penh.x, penh.y) < c) {
+        penh.drag = true;
+    }
+}
+
 function mouseDragged() {
     if (ph.drag) {
         ph.set(middlePoint(topLeftCorner.x, mouseX, topLeftCorner.x + squareSize, ph.y), ph.y);
@@ -117,7 +127,30 @@ function mouseDragged() {
     redraw();
 }
 
+function touchMoved() {
+    if (ph.drag) {
+        ph.set(middlePoint(topLeftCorner.x, touches[0][0], topLeftCorner.x + squareSize, ph.y), ph.y);
+    } else if (peh.drag) {
+        peh.set(peh.x, middlePoint(topLeftCorner.y, touches[0][1], topLeftCorner.y + squareSize));
+    } else if (penh.drag) {
+        penh.set(penh.x, middlePoint(topLeftCorner.y, touches[0][1], topLeftCorner.y + squareSize));
+    }
+
+    let a = (ph.x - topLeftCorner.x) * (topLeftCorner.y + squareSize - peh.y);
+    let b = (topLeftCorner.x + squareSize - ph.x) * (topLeftCorner.y + squareSize - penh.y);
+
+    ratio = a / (a + b);
+
+    redraw();
+}
+
 function mouseReleased() {
+    ph.drag = false;
+    peh.drag = false;
+    penh.drag = false;
+}
+
+function touchEnded() {
     ph.drag = false;
     peh.drag = false;
     penh.drag = false;
